@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+    --main-color: rgb(82 147 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* áp dụng trên 768px */
+@media only screen and (min-width: 768px) {
+:root {
+        --main-color: rgb(82 147 0);
+        --font-size-title: 20px;
+        --font-size-content: 15px;
+    }
+}
+
+/* áp dụng trên 992px */
+@media only screen and (min-width: 992px) {
+    :root {
+        --main-color: rgb(82 147 0);
+        --font-size-title: 26px;
+        --font-size-content: 17px;
+    }
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1200px) {
+    :root {
+        --main-color: rgb(82 147 0);
+        --font-size-title: 30px;
+        --font-size-content: 20px;
+    }
+}
+
+/* áp dụng trên 1400px */
+@media only screen and (min-width: 1400px) {
+
+}

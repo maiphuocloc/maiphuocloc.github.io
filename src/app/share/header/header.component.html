@@ -1,0 +1,29 @@
+<div class="header">
+    <div class="d-block d-md-flex justify-content-between">
+
+      <!-- icon submenu và tên website -->
+      <div class="header-title d-flex align-items-center">
+        <i class="menu fa fa-bars d-md-none ms-2"
+          [ngClass]="{'d-block': subMenuStatus == false, 'd-none': subMenuStatus == true}" aria-hidden="true"
+          (click)="showSubMenu()"></i>
+        <i class="menu fa fa-times d-md-none ms-2"
+          [ngClass]="{'d-block': subMenuStatus == true, 'd-none': subMenuStatus == false}" aria-hidden="true"
+          (click)="hiddenSubMenu()"></i>
+        <p class="m-0 p-2"><b>Mai Phước Lộc</b></p>
+      </div>
+
+      <!-- Danh sách trang -->
+      <div class="header-content d-block d-md-flex align-items-center justify-content-center gap-5">
+        <p id="home" class="m-0 p-2 text-md-center" routerLink="/home" (click)="changeRouter('home')">
+          <b>Home</b></p>
+        <p id="cv" class="m-0 p-2 text-md-center" routerLink="/cv" (click)="changeRouter('cv')"><b>CV</b></p>
+        <p id="profile" class="m-0 p-2 text-md-center" routerLink="/profile" (click)="changeRouter('profile')">
+          <b>Profile</b></p>
+        <p id="library" class="m-0 p-2 text-md-center" routerLink="/library" (click)="changeRouter('library')">
+          <b>Library</b></p>
+      </div>
+
+      <!-- Lớp phủ mờ-->
+      <div class="coating d-md-none" (click)="hiddenSubMenu()"></div>
+    </div>
+</div>

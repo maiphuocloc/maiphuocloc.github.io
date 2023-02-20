@@ -1,0 +1,99 @@
+.header {
+    position: fixed;
+    width: 100%;
+    max-width: 1320px;
+    height: 54px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    z-index: 1000;
+}
+
+.header.h-active {
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-title , .header-content {
+    height: 54px;
+    transition: all 0.2s ease-in-out;
+}
+
+.header.h-active .header-content {
+    height: 172px;
+    overflow: hidden;
+    background-color: white;
+    border-bottom: 1px solid black;
+    transition: all 0.2s ease-in-out;
+}
+
+.header .coating {
+    height: 0;
+    opacity: 0%;
+    transition: all 0.3s ease-in-out;
+}
+
+.header.h-active .coating {
+    height: calc(100vh - 172px - 54px);
+    opacity: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.header.h-active .header-content p {
+    width: 100%;
+    opacity: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.header-title p {
+    cursor: default;
+}
+
+.header-title .menu {
+    width: 16px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.header-title .menu:hover {
+    color: rgb(255, 155, 45);
+}
+
+.header-content p {
+    width: 100px;
+    cursor: pointer;
+}
+
+.header-content p:hover {
+    color: rgb(255, 155, 45);
+}
+
+.header-content p.h-t-active {
+    color: rgb(255, 155, 45);
+}
+
+
+
+
+/* áp dụng trên 767px */
+@media only screen and (min-width: 768px) {
+    .header {
+        max-width: 720px;
+    }
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1200px) {
+    .header {
+        max-width: 1140px;
+    }
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1400px) {
+    .header {
+        max-width: 1320px;
+    }
+}

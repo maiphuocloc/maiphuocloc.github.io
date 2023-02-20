@@ -1,0 +1,119 @@
+
+.curriculum-vitae {
+    border: 3px solid silver;
+    font-size: var(--font-size-content);
+}
+
+.cv-title {
+    font-size: var(--font-size-title);
+    color: var(--main-color);
+    border-bottom: 3px solid silver;
+}
+
+.cv-content {
+    color: var(--main-color);
+}
+
+.avatar-box {
+    border: 5px solid var(--main-color);
+    border-radius: 50%;
+}
+.avatar-box img {
+    width: 100%;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.info-box .user-content {
+    height: 15vw;
+    border-bottom: 5px solid var(--main-color);
+}
+
+.info-box .user-contact {
+    height: 10vw;
+}
+
+.user-content .user-name span{
+    font-size: 29px;
+    color: var(--main-color);
+}
+
+.user-content .user-role span, .user-contact .user-role span  {
+    font-size: 17px;
+    color: var(--main-color);
+}
+
+.user-contact span, .user-contact span a {
+    font-size: var(--font-size-content);
+}
+
+.work-experience ul li, .certificate ul li{
+    list-style: none;
+}
+
+.work-experience li:before, .certificate li:before { 
+    content: "- ";
+}
+
+.skill .skill-box {
+    border: 1px solid var(--main-color);
+    border-radius: 50px;
+    
+}
+
+.skill-box .skill-point {
+    border-radius: 50px;
+    background-color: var(--main-color);
+    text-align: right;
+    color: white;
+    padding-right: 10px;
+    font-size: 10px;
+}
+
+
+/* áp dụng trên 768px */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* áp dụng trên 992px */
+@media only screen and (min-width: 992px) {
+    .info-box .user-content {
+        height: 15vw;
+    }
+    .info-box .user-contact {
+        height: 13vw;
+    }
+    .user-content .user-name span {
+        font-size: 30px;
+    }
+    .user-content .user-role span {
+        font-size: 20px;
+    }
+    .skill-box .skill-point {
+        font-size: 13px;
+    }
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1200px) {
+    .info-box .user-content, .info-box .user-contact {
+        height: 173px;
+    }
+    .user-content .user-name span {
+        font-size: 40px;
+    }
+    .user-content .user-role span {
+        font-size: 25px;
+    }
+
+    .skill-box .skill-point {
+        font-size: 15px;
+    }
+}
+
+/* áp dụng trên 1400px */
+@media only screen and (min-width: 1400px) {
+    .info-box .user-content, .info-box .user-contact {
+        height: 203px;
+    }
+}

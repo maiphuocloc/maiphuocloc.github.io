@@ -1,0 +1,8 @@
+.footer {
+    height: 54px;
+    background-color: #f0f0f0;
+}
+
+.footer .version {
+    line-height: 54px;
+}
