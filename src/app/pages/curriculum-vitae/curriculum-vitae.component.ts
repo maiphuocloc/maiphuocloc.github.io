@@ -35,7 +35,17 @@ export class CurriculumVitaeComponent implements OnInit {
       point: "80"
     }
   ]
+
+  menuFunction = {
+    Overview: true,
+    careerObjectives: true,
+    education: true,
+    workExperience: true,
+    skills: true,
+    certificate: true,
+  }
     
+  showCV: boolean = false;
 
   ngOnInit(): void {
   }
