@@ -46,18 +46,18 @@
     font-size: var(--font-size-content);
 }
 
-.work-experience ul li, .certificate ul li{
+.overview ul li, .work-experience ul li, .certificate ul li{
     list-style: none;
 }
 
-.work-experience li:before, .certificate li:before { 
+.overview li:before, .work-experience li:before, .certificate li:before { 
     content: "- ";
 }
 
 .skill .skill-box {
     border: 1px solid var(--main-color);
     border-radius: 50px;
-    
+    max-width: 621px;
 }
 
 .skill-box .skill-point {

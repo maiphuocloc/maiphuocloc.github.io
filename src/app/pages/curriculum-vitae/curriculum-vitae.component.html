@@ -1,5 +1,5 @@
 <div class="curriculum-vitae">
-    <div class="personal_information row mb-sm-5 m-md-0 p-4 p-sm-5">
+    <div *ngIf="menuFunction.personalInformation" class="personal_information row mb-sm-5 m-md-0 p-4 p-sm-5">
         <div class="avatar-box col-4 m-0 p-0">
             <img src="../../../assets/curriculum-vitae/avatar.jpg" alt="">
         </div>
@@ -45,7 +45,7 @@
     </div>
 
 
-    <div class="user-contact d-sm-none px-3 pb-3 px-sm-5 pb-sm-5">
+    <div *ngIf="menuFunction.personalInformation" class="user-contact d-sm-none px-3 pb-3 px-sm-5 pb-sm-5">
         <div class="d-flex row m-0 p-0">
             <div class="col-12 p-0 d-flex align-items-center">
                 <span><i class="fa-solid fa-calendar"></i> <span class="ms-3">14/09/1998</span></span>
@@ -67,13 +67,28 @@
             </div>
         </div>
     </div>
-    
+
     <div *ngIf="showCV">
         <div *ngIf="menuFunction.careerObjectives" class="career-objectives p-3 px-sm-5 pb-sm-5">
             <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">MỤC TIÊU NGHỀ NGHIỆP</p>
             <span>Tôi đang tìm kiếm môi trường làm việc thích hợp để phát triển bản thân, phát triển các
                 kỹ năng để phục vụ công việc, giúp công ty hoàn thành các dự án và giúp bản thân ngày càng hoàn
                 thiện.</span>
+        </div>
+
+        <div *ngIf="menuFunction.overview" class="overview p-3 px-sm-5 pb-sm-5">
+            <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">TỔNG QUAN</p>
+            <ul class="m-0 p-0">
+                <li>Hơn <b>3 năm khinh nghiệm</b> lập trình Front-end</li>
+                <li>Kỹ năng lập trình tốt, có kinh nghiệm làm việc và quản lý đội nhóm</li>
+                <li>Thành thạo HTML, CSS, JavaScript</li>
+                <li>Thành thạo JavaScript, bao gồm thao tác DOM.</li>
+                <li>Hiểu rõ về Angular</li>
+                <li>Có kinh nghiệm làm việc với RESTful API</li>
+                <li>Sử dụng thành thạo GIT, Azure</li>
+                <li>Khả năng học hỏi và ứng dụng công nghệ mới nhanh</li>
+                <li>Nơi làm việc: Hồ Chí Minh, Việt Nam</li>
+            </ul>
         </div>
 
         <div *ngIf="menuFunction.education" class="education p-3 px-sm-5 pb-sm-5">
@@ -94,54 +109,8 @@
             <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">KINH NGHIỆM LÀM VIỆC</p>
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <p class="cv-content m-0">LẬP TRÌNH VIÊN FRONT-END</p>
-                    <p class="m-0">02/2020 - 11/2021</p>
-                </div>
-                <div class="col-12 col-md-8">
-                    <b>CÔNG TY TNHH ĐIỆN ĐIỆN TỬ C&T</b>
-                    <p class="m-0">Công việc chính:</p>
-                    <ul class="m-0">
-                        <li>Nhận yêu cầu và phân tích chức năng của webapp.</li>
-                        <li>Dựng wireframe dựa trên yêu cầu của khách hàng.</li>
-                        <li>Xây dựng và phát triển giao diện webapp theo yêu cầu của khách hàng.</li>
-                        <li>Xây dựng webapp phù hợp trên nhiều thiết bị.</li>
-                    </ul>
-                    <p class="m-0">Các dự án tham gia:</p>
-                    <ul>
-                        <li>Phần mềm quản lý kiosk bán vé xe.</li>
-                        <li>Phần mềm bán vé xe online.</li>
-                        <li>Phần mềm quản lý kiosk căng tin trường học.</li>
-                        <li>Phần mềm bán hàng online.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <p class="cv-content m-0">LẬP TRÌNH VIÊN FRONT-END</p>
-                    <p class="m-0">12/2021 - 12/2022</p>
-                </div>
-                <div class="col-12 col-md-8">
-                    <b>CÔNG TY TNHH PHẦN MỀM HOÀN CẦU</b>
-                    <p class="m-0">Công việc chính:</p>
-                    <ul class="m-0">
-                        <li>Tham gia hỗ trợ trao đổi và lấy yêu cầu trực tiếp từ khách hàng.</li>
-                        <li>Xây dựng và phát triển giao diện website/webapp theo thiết kế.</li>
-                        <li>Xây dựng website phù hợp trên nhiều thiết bị.</li>
-                    </ul>
-                    <p class="m-0">Các dự án tham gia:</p>
-                    <ul>
-                        <li>Xây dựng và phát triển website <a href="https://www.fristi.vn"
-                                target="_blank">fristi.vn</a>.
-                        </li>
-                        <li>Hiệu chỉnh các phần mềm quản lý tài sản.</li>
-                        <li>Hiệu chỉnh các app kiểm kê tài sản.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4">
                     <p class="cv-content m-0">LEADER FRONT-END</p>
-                    <p class="m-0">01/2023 - 03/2023</p>
+                    <p class="m-0">01/2023 - Hiện tại</p>
                 </div>
                 <div class="col-12 col-md-8">
                     <b>CÔNG TY TNHH PHẦN MỀM HOÀN CẦU</b>
@@ -163,10 +132,61 @@
                     </ul>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <p class="cv-content m-0">LẬP TRÌNH VIÊN FRONT-END</p>
+                    <p class="m-0">12/2021 - 12/2022</p>
+                </div>
+                <div class="col-12 col-md-8">
+                    <b>CÔNG TY TNHH PHẦN MỀM HOÀN CẦU</b>
+                    <p class="m-0">Công việc chính:</p>
+                    <ul class="m-0">
+                        <li>Tham gia hỗ trợ trao đổi và lấy yêu cầu trực tiếp từ khách hàng.</li>
+                        <li>Xây dựng và phát triển giao diện website/webapp theo thiết kế.</li>
+                        <li>Xây dựng website phù hợp trên nhiều thiết bị.</li>
+                    </ul>
+                    <p class="m-0">Các dự án tham gia:</p>
+                    <ul class="m-0">
+                        <li>Xây dựng và phát triển website <a href="https://www.fristi.vn"
+                                target="_blank">fristi.vn</a>.
+                        </li>
+                        <li>Hiệu chỉnh các phần mềm quản lý tài sản.</li>
+                        <li>Hiệu chỉnh các app kiểm kê tài sản.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <p class="cv-content m-0">LẬP TRÌNH VIÊN FRONT-END</p>
+                    <p class="m-0">02/2020 - 11/2021</p>
+                </div>
+                <div class="col-12 col-md-8">
+                    <b>CÔNG TY TNHH ĐIỆN ĐIỆN TỬ C&T</b>
+                    <p class="m-0">Công việc chính:</p>
+                    <ul class="m-0">
+                        <li>Nhận yêu cầu và phân tích chức năng của webapp.</li>
+                        <li>Dựng wireframe dựa trên yêu cầu của khách hàng.</li>
+                        <li>Xây dựng và phát triển giao diện webapp theo yêu cầu của khách hàng.</li>
+                        <li>Xây dựng webapp phù hợp trên nhiều thiết bị.</li>
+                    </ul>
+                    <p class="m-0">Các dự án tham gia:</p>
+                    <ul class="m-0">
+                        <li>Phần mềm quản lý kiosk bán vé xe.</li>
+                        <li>Phần mềm bán vé xe online.</li>
+                        <li>Phần mềm quản lý kiosk căng tin trường học.</li>
+                        <li>Phần mềm bán hàng online.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="menuFunction.projects" class="work-experience p-3 px-sm-5 pb-sm-5">
+            <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">DỰ ÁN</p>
+
         </div>
 
         <div *ngIf="menuFunction.skills || menuFunction.certificate" class="skills-certificate p-3 px-sm-5 pb-sm-5 row">
-            <div *ngIf="menuFunction.skills" class="skills col-12 col-sm-6">
+            <div *ngIf="menuFunction.skills" class="skills col-12" [ngClass]="{'col-sm-6': menuFunction.certificate}">
                 <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">CÁC KỸ NĂNG</p>
                 <div *ngFor="let item of listSkills" class="skill">
                     <p class="mx-0 my-2">{{item.name}}</p>
@@ -175,7 +195,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="menuFunction.certificate" class="certificate col-12 pt-4 p-sm-0 col-sm-6">
+            <div *ngIf="menuFunction.certificate" class="certificate col-12 pt-4 p-sm-0" [ngClass]="{'col-sm-6': menuFunction.skills}">
                 <p class="cv-title m-0 pb-2 mb-3 mb-sm-4">CHỨNG CHỈ</p>
                 <ul class="m-0 p-0">
                     <li><a href="../../../assets/curriculum-vitae/certificate/certificate_html_css.png"
