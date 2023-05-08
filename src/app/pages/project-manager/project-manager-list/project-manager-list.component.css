@@ -3,16 +3,18 @@ p {
     margin: 0px;
 }
 
-.last-project-list {
+.last-project-box, .project-list {
     border: 1px solid #dedede;
-    box-shadow: 0px 2px 6px #dedede;
     border-radius: 5px;
+    box-shadow: 0px 2px 6px #dedede;
 }
 
+.last-project-box {
+    border-bottom: 1px solid #dedede;
+    cursor: pointer;
+    width: 100%;
+}
 .project-list {
-    border: 1px solid #dedede;
-    box-shadow: 0px 2px 6px #dedede;
-    border-radius: 5px;
     overflow-y: scroll;
     max-height: calc(100vh - 320px)
 }
@@ -31,7 +33,7 @@ p {
     border-bottom: 0px;
 }
 
-.project-box:hover {
+.project-box:hover, .last-project-box:hover {
     background-color: rgb(226, 226, 226);
 }
 
@@ -46,10 +48,41 @@ p {
     height: auto;
 }
 
+.project-info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 50px);
+}
+
 .project-name {
+    white-space:nowrap;
     font-size: 16px;
 }
 
 .project-code {
+    white-space:nowrap;
     font-size: 12px;
 }
+
+
+/* áp dụng trên 767px */
+@media only screen and (min-width: 768px) {
+    .last-project-spacing:first-child {
+        padding-left: 0px;
+    }
+    
+    .last-project-spacing:last-child {
+        padding-right: 0px;
+    }
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1200px) {
+   
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1400px) {
+    
+}
+
