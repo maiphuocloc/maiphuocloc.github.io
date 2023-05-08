@@ -1,3 +1,105 @@
 <div class="library">
-    <p>library works!</p>
+    <div class="libraryVocabulary-session my-5">
+        <p>Library Vocabulary</p>
+        <p>Point XX/XX</p>
+        <div class="row m-0">
+            <form [formGroup]="wordForm" class="col-6 px-2 border rounded">
+                <div class="my-2">
+                    <input type="text" class="form-control" formControlName="english" placeholder="English">
+                </div>
+                <div class="mb-2">
+                    <input type="text" class="form-control" formControlName="vietnamese" placeholder="Vietnamese">
+                </div>
+                <div class="mb-2">
+                    <input type="text" class="form-control" formControlName="wordType" placeholder="Word Type">
+                </div>
+                <div class="mb-2">
+                    <input type="text" class="form-control" formControlName="exampleSentences" placeholder="Example Sentences">
+                </div>
+                <div class="mb-2">
+                    <button (click)="checkWord()" class="btn btn-danger me-2">Check</button>
+                    <button (click)="randomAWord()" class="btn btn-primary">Next Word</button>
+                </div>
+            </form>
+            <div class="col-6 px-2">
+                <div class="row m-0">
+                    <div class="my-2">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAWordModal">Add New Word</button>
+                    </div>
+                    <div class="mb-2">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#libraryModal" (click)="getAllWord()">Library</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal library-->
+<div class="modal fade" id="libraryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="libraryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="libraryModalLabel">Library</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">English</th>
+                        <th scope="col">Vietnamese</th>
+                        <th scope="col">Word Type</th>
+                        <th scope="col">Example Sentences</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of allWords; index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.english}}</td>
+                        <td>{{item.vietnamese}}</td>
+                        <td>{{item.wordType}}</td>
+                        <td>{{item.exampleSentences}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal add new word-->
+<div class="modal fade" id="createAWordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createAWordLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createAWordLabel">Create A Word</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clearAddWordForm()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addWordForm">
+                    <div class="my-2">
+                        <input type="text" class="form-control" formControlName="english" placeholder="English">
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" formControlName="vietnamese" placeholder="Vietnamese">
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" formControlName="wordType" placeholder="Word Type">
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" formControlName="exampleSentences" placeholder="Example Sentences">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clearAddWordForm()">Close</button>
+                <button type="button" class="btn btn-primary" [disabled]="addWordForm.invalid  ? true : null" (click)="createAWord()">Save</button>
+            </div>
+        </div>
+    </div>
 </div>

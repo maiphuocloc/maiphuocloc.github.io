@@ -28,7 +28,7 @@ const routes: Routes = [
         path: 'library',
         component: LibraryComponent,
       },
-      { path: '', redirectTo: 'cv', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
