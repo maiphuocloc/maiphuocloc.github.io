@@ -10,6 +10,7 @@ import { LibraryComponent } from './library/library.component';
 import { CurriculumVitaeComponent } from './curriculum-vitae/curriculum-vitae.component';
 import { PagesComponent } from './pages.component';
 import { ShareModule } from '../share/share.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ShareModule } from '../share/share.module';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     PagesRoutingModule,
     ShareModule
   ],

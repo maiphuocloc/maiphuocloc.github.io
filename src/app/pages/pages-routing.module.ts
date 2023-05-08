@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LibraryComponent } from './library/library.component';
 import { PagesComponent } from './pages.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProjectManagerComponent } from './project-manager/project-manager.component';
 
 const routes: Routes = [
     
@@ -28,7 +29,12 @@ const routes: Routes = [
         path: 'library',
         component: LibraryComponent,
       },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {
+        path: 'project-manager',
+        loadChildren: () =>
+          import('./project-manager/project-manager.module').then((m) => m.ProjectManagerModule),
+      },
+      { path: '', redirectTo: 'project-manager', pathMatch: 'full' },
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
