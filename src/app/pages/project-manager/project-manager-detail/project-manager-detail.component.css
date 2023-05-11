@@ -3,33 +3,14 @@ p {
     margin: 0px;
 }
 
-.detail-list {
+.accordion {
     border: 1px solid #dedede;
     border-radius: 5px;
     box-shadow: 0px 2px 6px #dedede;
     
 }
-.detail-list {
-    overflow-y: scroll;
-    max-height: calc(100vh - 320px)
-}
 
-.detail-list::-webkit-scrollbar
-{
-	width: 0px;
-}
-
-.detail-box {
-    border-bottom: 1px solid #dedede;
-    cursor: pointer;
-    height: 58px;
-}
-
-.detail-box:last-child {
-    border-bottom: 0px;
-}
-
-.detail-box:hover{
+.accordion-button:hover{
     background-color: rgb(226, 226, 226);
 }
 
