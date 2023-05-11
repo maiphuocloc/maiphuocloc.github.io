@@ -1,0 +1,49 @@
+
+p {
+    margin: 0px;
+}
+
+.detail-list {
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px #dedede;
+    
+}
+.detail-list {
+    overflow-y: scroll;
+    max-height: calc(100vh - 320px)
+}
+
+.detail-list::-webkit-scrollbar
+{
+	width: 0px;
+}
+
+.detail-box {
+    border-bottom: 1px solid #dedede;
+    cursor: pointer;
+    height: 58px;
+}
+
+.detail-box:last-child {
+    border-bottom: 0px;
+}
+
+.detail-box:hover{
+    background-color: rgb(226, 226, 226);
+}
+
+/* áp dụng trên 767px */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1200px) {
+   
+}
+
+/* áp dụng trên 1200px */
+@media only screen and (min-width: 1400px) {
+    
+}
