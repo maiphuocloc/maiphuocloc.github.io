@@ -41,11 +41,11 @@ p {
 }
 
 .logo-box {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo-box:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .grid {
@@ -61,6 +61,19 @@ p {
   width: 100%;
 }
 
+.add-new-document {
+  border: 1px dashed #000;
+  color: #000;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  height: 102px;
+}
+
+.add-new-document:hover {
+  opacity: 0.5;
+}
+
 
 /* áp dụng trên 767px */
 @media only screen and (min-width: 768px) {
@@ -74,11 +87,11 @@ p {
 
 
   .project-name {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .project-code {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
