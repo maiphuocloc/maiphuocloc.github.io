@@ -1,30 +1,121 @@
-
 p {
-    margin: 0px;
+  margin: 0px;
 }
 
+.project-box,
 .accordion {
-    border: 1px solid #dedede;
-    border-radius: 5px;
-    box-shadow: 0px 2px 6px #dedede;
-    
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px #dedede;
 }
 
-.accordion-button:hover{
-    background-color: rgb(226, 226, 226);
+.project-box {
+  border-bottom: 1px solid #dedede;
+  width: 100%;
 }
+
+.project-name,
+.project-code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-name {
+  font-size: 16px;
+}
+
+.project-code {
+  font-size: 12px;
+}
+
+.accordion-button:hover {
+  background-color: rgb(226, 226, 226);
+}
+
+.project-logo {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid silver;
+  position: relative;
+}
+
+.logo-box {
+    cursor: pointer;
+}
+
+.logo-box:hover {
+    opacity: 0.5;
+}
+
+.grid {
+  position: relative;
+  min-height: 107px;
+}
+
+.img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: cover;
+  width: 100%;
+}
+
 
 /* áp dụng trên 767px */
 @media only screen and (min-width: 768px) {
 
+  .project-logo,
+  .grid,
+  .img {
+    width: 107px;
+    height: 107px;
+  }
+
+
+  .project-name {
+    font-size: 23px;
+  }
+
+  .project-code {
+    font-size: 18px;
+  }
 }
 
 /* áp dụng trên 1200px */
 @media only screen and (min-width: 1200px) {
-   
+
+  .project-logo,
+  .grid,
+  .img {
+    width: 176px;
+    height: 176px;
+  }
+
+  .project-name {
+    font-size: 30px;
+  }
+
+  .project-code {
+    font-size: 23px;
+  }
 }
 
-/* áp dụng trên 1200px */
+/* áp dụng trên 1400px */
 @media only screen and (min-width: 1400px) {
-    
+
+  .project-logo,
+  .grid,
+  .img {
+    width: 215px;
+    height: 215px;
+  }
+
+  .project-name {
+    font-size: 40px;
+  }
+
+  .project-code {
+    font-size: 30px;
+  }
 }

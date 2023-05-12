@@ -1,8 +1,35 @@
 <div class="project-detail px-2 px-md-5 p-xl-0">
     <div class="project-detail-session my-5">
         <p class="pb-3"><b>{{title}} dự án</b></p>
+
+        <div class="project-box row m-0 p-2 my-3">
+            <div class="project-logo col-2 p-0">
+                <input #logoBox type="file" accept="image/*" (change)="onFileLogoChanged($event)"
+                    hidden />
+
+                <div *ngIf="resourceLogo.length != 1" (click)="logoBox.click()" class="logo-box">
+                    <div class="grid">
+                        <img src="../../../../assets/project-manager/add-thumbnail-img.png" class="img rounded">
+                    </div>
+                </div>
+
+                <div *ngIf="resourceLogo.length == 1"  (click)="logoBox.click()" class="logo-box">
+                    <div *ngFor="let res of resourceLogo">
+                        <div class="grid">
+                            <img [src]="res.preview" class="img rounded" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-info col-10 p-0 ps-2">
+                <p class="project-name"><b>Tên dự án</b></p>
+                <p class="project-code">Mã dự án</p>
+            </div>
+        </div>
+
         <div class="accordion" id="accordionExample">
-            
+
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -99,7 +126,7 @@
                 </div>
             </div>
 
-            
+
         </div>
     </div>
 </div>

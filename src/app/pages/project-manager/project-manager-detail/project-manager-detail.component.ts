@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { state } from '../../Enum';
 
@@ -12,7 +13,8 @@ export class ProjectManagerDetailComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) { }
 
   projectInfoForm = this.formBuilder.group({
@@ -23,6 +25,7 @@ export class ProjectManagerDetailComponent implements OnInit {
   state = state;
   title!: string;
   id!: string;
+  resourceLogo: any[] = [];
 
   ngOnInit(): void {
     var id = this.route.snapshot.paramMap.get('id');
@@ -53,4 +56,16 @@ export class ProjectManagerDetailComponent implements OnInit {
 
   }
 
+  onFileLogoChanged(event: any): void {
+    if (event.target.files) {
+      this.resourceLogo = [];
+      for (let file of event.target.files) {
+        file.preview = this.sanitizer.bypassSecurityTrustUrl(
+          URL.createObjectURL(file)
+        );
+        this.resourceLogo.push(file);
+      }
+    }
+    event.target.value = '';
+  }
 }
