@@ -39,9 +39,6 @@ p {
 
 .project-logo {
     border-radius: 5px;
-    overflow: hidden;
-    border: 1px solid silver;
-    position: relative;
 }
 
 .project-logo img {
@@ -59,7 +56,7 @@ p {
     font-size: 16px;
 }
 
-.project-code {
+.project-code, .last-project-info .project-name, .create-at, .update-at {
     font-size: 12px;
 }
 
@@ -77,22 +74,22 @@ p {
 
 /* áp dụng trên 1200px */
 @media only screen and (min-width: 1200px) {
-    .project-name{
+    .project-name {
         font-size: 20px;
     }
     
-    .project-code {
+    .project-code, .last-project-info .project-name, .create-at, .update-at {
         font-size: 15px;
     }
 }
 
 /* áp dụng trên 1400px */
 @media only screen and (min-width: 1400px) {
-    .project-name{
+    .project-name {
         font-size: 24px;
     }
     
-    .project-code {
+    .project-code, .last-project-info .project-name, .create-at, .update-at {
         font-size: 18px;
     }
 }

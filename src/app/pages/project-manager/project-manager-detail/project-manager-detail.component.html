@@ -23,7 +23,11 @@
 
             <div class="project-info col-10 p-0 ps-2">
                 <input type="text" class="form-control project-name mb-2" placeholder="Tên dự án">
-                <input type="text" class="form-control project-code" placeholder="Mã dự án">
+                <input type="text" class="form-control project-code mb-2" placeholder="Mã dự án">
+                <div class="input-group">
+                    <input type="date" class="form-control project-create">
+                    <input type="date" class="form-control project-update">
+                  </div>
             </div>
         </div>
 
@@ -41,14 +45,14 @@
                     [attr.aria-labelledby]="'heading' + item.id" data-bs-parent="#accordionProject">
                     <div class="accordion-body p-2">
                         <div *ngFor="let list of item.list" class="input-group mb-2">
-                            <div class="input-group-text">
+                            <div class="input-group-text" [ngClass]="{'check-done': list.check ? 'checker' : false}">
                                 <input class="form-check-input mt-0" type="checkbox"
                                     [attr.checked]="list.check ? 'checker' : null"
                                     aria-label="Checkbox for following text input">
                             </div>
-                            <div class="form-control p-2">
+                            <div class="form-control p-2" [ngClass]="{'check-done': list.check ? 'checker' : false}">
                                 <input type="text" class="form-control mb-2" placeholder="Tiêu đề" value={{list.title}}>
-                                <input type="text" class="form-control" placeholder="Link" value={{list.link}}>
+                                <textarea  class="form-control" placeholder="Nội dung" value={{list.content}}></textarea>
                             </div>
                         </div>
                         <div class="add-new-document d-flex justify-content-center align-items-center p-2" (click)="addNewDocument(item.document_type)">

@@ -26,8 +26,8 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 1,
       list: [
-        { id: '1', title: 'PO', link: '', check: 'checked'},
-        { id: '2', title: 'Estimation', link: '', check: ''}
+        { id: '1', title: 'PO', content: '', check: 'checked'},
+        { id: '2', title: 'Estimation', content: '', check: ''}
       ],
       document_type: 'project_document',
       title: 'Tài liệu dự án'
@@ -35,8 +35,8 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 2,
       list: [
-        { id: '1', title: 'Quyết định khởi động dự án', link: '', check: '' },
-        { id: '2', title: 'Quyết định thành lập đội dự án', link: '', check: ''}
+        { id: '1', title: 'Quyết định khởi động dự án', content: '', check: '' },
+        { id: '2', title: 'Quyết định thành lập đội dự án', content: '', check: ''}
       ],
       document_type: 'decision_document', 
       title: 'Quyêt định'
@@ -44,9 +44,9 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 3,
       list: [
-        { id: '1', title: 'Tài liệu SRD', link: '', check: ''},
-        { id: '2', title: 'Design', link: '', check: ''},
-        { id: '3', title: 'Kế hoạch', link: '', check: ''}
+        { id: '1', title: 'Tài liệu SRD', content: '', check: ''},
+        { id: '2', title: 'Design', content: '', check: ''},
+        { id: '3', title: 'Kế hoạch', content: '', check: ''}
       ],
       document_type: 'technical_document',
       title: 'Tài liệu kỹ thuật'
@@ -54,8 +54,8 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 4,
       list: [
-        { id: '1', title: 'PO', link: '', check: ''},
-        { id: '2', title: 'Estimation', link: '', check: ''}
+        { id: '1', title: 'PO', content: '', check: ''},
+        { id: '2', title: 'Estimation', content: '', check: ''}
       ],
       document_type: 'meeting_document',
       title: 'Nội dung các cuộc họp'
@@ -63,7 +63,7 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 5,
       list: [
-        { id: '1', title: 'Báo cáo tuần 1', link: '', check: ''}
+        { id: '1', title: 'Báo cáo tuần 1', content: '', check: ''}
       ],
       document_type: 'report_document',
       title: 'Báo cáo tiến độ hằng tuần'
@@ -71,12 +71,12 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 6,
       list: [
-        { id: '1', title: 'Link Dev', link: '', check: ''},
-        { id: '2', title: 'Link Test', link: '', check: ''},
-        { id: '3', title: 'Link Prod', link: '', check: ''},
-        { id: '4', title: 'Database', link: '', check: ''},
-        { id: '5', title: 'Link GIT FE', link: '', check: ''},
-        { id: '6', title: 'Link GIT BE', link: '', check: ''}
+        { id: '1', title: 'content Dev', content: '', check: ''},
+        { id: '2', title: 'content Test', content: '', check: ''},
+        { id: '3', title: 'content Prod', content: '', check: ''},
+        { id: '4', title: 'Database', content: '', check: ''},
+        { id: '5', title: 'content GIT FE', content: '', check: ''},
+        { id: '6', title: 'content GIT BE', content: '', check: ''}
       ],
       document_type: 'build_document',
       title: 'Xây dựng dự án'
@@ -84,11 +84,11 @@ export class ProjectManagerDetailComponent implements OnInit {
     {
       id: 7,
       list: [
-        { id: '1', title: 'Biên bản nghiệm thu UAT', link: '', check: ''},
-        { id: '2', title: 'Biên bản nghiệm thu UAT tổng', link: '', check: ''},
-        { id: '3', title: 'Biên bản Golive', link: '', check: ''},
-        { id: '4', title: 'Biên bản bàn giao', link: '', check: ''},
-        { id: '5', title: 'Biên bản nghiệm thu tổng thể', link: '', check: ''}
+        { id: '1', title: 'Biên bản nghiệm thu UAT', content: '', check: ''},
+        { id: '2', title: 'Biên bản nghiệm thu UAT tổng', content: '', check: ''},
+        { id: '3', title: 'Biên bản Golive', content: '', check: ''},
+        { id: '4', title: 'Biên bản bàn giao', content: '', check: ''},
+        { id: '5', title: 'Biên bản nghiệm thu tổng thể', content: '', check: ''}
       ],
       document_type: 'acceptance_document',
       title: 'Biên bản nghiệm thu'
