@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectManagerService } from 'src/app/Service/projectManager.service';
 import { state, new_list_documents } from '../Enum';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-project-manager-detail',
@@ -67,8 +68,8 @@ export class ProjectManagerDetailComponent implements OnInit {
         code: resp.data.code,
         status_project: resp.data.status_project,
         version: resp.data.version,
-        createAt: resp.data.createAt,
-        updateAt: resp.data.updateAt
+        createAt: moment(resp.data.createAt).format("YYYY-MM-DD"),
+        updateAt: moment(resp.data.updateAt).format("YYYY-MM-DD")
       });
       console.log(resp);
       console.log(this.projectInfoForm.value);
