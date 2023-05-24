@@ -1,8 +1,9 @@
 <div class="project-detail px-2 px-md-5 p-xl-0">
     <div class="project-detail-session my-5">
-        <p class="pb-3"><b>{{title}} dự án</b></p>
+        <p class="pb-3"><b>{{pageTitle}} dự án</b></p>
 
-        <div class="project-box row m-0 p-2 my-3">
+        <!-- Thông tin dự án -->
+        <form [formGroup]="projectInfoForm" class="project-box row m-0 p-2 my-3">
             <div class="project-logo col-2 p-0">
                 <input #logoBox type="file" accept="image/*" (change)="onFileLogoChanged($event)" hidden />
 
@@ -22,41 +23,53 @@
             </div>
 
             <div class="project-info col-10 p-0 ps-2">
-                <input type="text" class="form-control project-name mb-2" placeholder="Tên dự án">
-                <input type="text" class="form-control project-code mb-2" placeholder="Mã dự án">
+                <input type="text" class="form-control project-name mb-2" formControlName="name" placeholder="Tên dự án">
                 <div class="input-group">
-                    <input type="date" class="form-control project-create">
-                    <input type="date" class="form-control project-update">
+                    <input type="text" class="form-control project-code mb-2" formControlName="code" placeholder="Mã dự án">
+                    <input type="text" class="form-control project-code mb-2" formControlName="version" placeholder="Phiên bản">
                   </div>
+                <div class="input-group">
+                    <input type="date" class="form-control project-create" formControlName="createAt" [attr.disabled]="true">
+                    <input type="date" class="form-control project-update" formControlName="updateAt" [attr.disabled]="true">
+                </div>
             </div>
+        </form>
+
+        <!-- Các nút chức năng -->
+        <div class="mb-3 d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="saveInput()">Lưu</button>
         </div>
 
+        <!-- Danh sách các loại tài liệu -->
         <div class="accordion" id="accordionProject">
-
             <div *ngFor="let item of list_documents" class="accordion-item">
-                <h2 class="accordion-header" id="heading{{item.id}}">
+                <h2 class="accordion-header" id="heading{{item.stt}}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        [attr.data-bs-target]="'#collapse' + item.id" aria-expanded="false"
-                        [attr.aria-controls]="'#collapse' + item.id">
+                        [attr.data-bs-target]="'#collapse' + item.stt" aria-expanded="false"
+                        [attr.aria-controls]="'#collapse' + item.stt">
                         {{item.title}} ({{item.list.length}})
                     </button>
                 </h2>
-                <div id="collapse{{item.id}}" class="accordion-collapse collapse"
-                    [attr.aria-labelledby]="'heading' + item.id" data-bs-parent="#accordionProject">
+                <div id="collapse{{item.stt}}" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="'heading' + item.stt" data-bs-parent="#accordionProject">
                     <div class="accordion-body p-2">
-                        <div *ngFor="let list of item.list" class="input-group mb-2">
-                            <div class="input-group-text" [ngClass]="{'check-done': list.check ? 'checker' : false}">
+
+                        <!-- Danh sách các tài liệu -->
+                        <div *ngFor="let doc of item.list; index as i" class="input-group mb-2">
+                            <div class="input-group-text" [ngClass]="{'check-done': doc.check ? 'checker' : false}">
                                 <input class="form-check-input mt-0" type="checkbox"
-                                    [attr.checked]="list.check ? 'checker' : null"
-                                    aria-label="Checkbox for following text input">
+                                    [attr.checked]="doc.check ? 'checker' : null"
+                                    aria-label="Checkbox for following text input"
+                                    (change)="changeCheck(item.document_type,i)">
                             </div>
-                            <div class="form-control p-2" [ngClass]="{'check-done': list.check ? 'checker' : false}">
-                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề" value={{list.title}}>
-                                <textarea  class="form-control" placeholder="Nội dung" value={{list.content}}></textarea>
+                            <div class="form-control p-2" [ngClass]="{'check-done': doc.check ? 'checker' : false}">
+                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề" value={{doc.title}}>
+                                <textarea class="form-control" placeholder="Nội dung" value={{doc.content}}></textarea>
                             </div>
                         </div>
-                        <div class="add-new-document d-flex justify-content-center align-items-center p-2" (click)="addNewDocument(item.document_type)">
-                                <span>Thêm mới +</span>
+                        <div class="add-new-document d-flex justify-content-center align-items-center p-2"
+                            (click)="addNewDocument(item.document_type)">
+                            <span>Thêm mới +</span>
                         </div>
                     </div>
                 </div>

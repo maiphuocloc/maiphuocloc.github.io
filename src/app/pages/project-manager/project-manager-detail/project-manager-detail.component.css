@@ -21,6 +21,10 @@ p {
   white-space: nowrap;
 }
 
+.accordion {
+  min-height: 52px;
+}
+
 .accordion-button {
   font-weight: bold;
 }
