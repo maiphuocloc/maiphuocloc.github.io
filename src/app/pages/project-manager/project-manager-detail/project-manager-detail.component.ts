@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectManagerService } from 'src/app/Service/projectManager.service';
 import { state, new_list_documents } from '../Enum';
 import * as moment from 'moment';
@@ -14,8 +14,9 @@ import * as moment from 'moment';
 export class ProjectManagerDetailComponent implements OnInit {
 
   constructor(
-    private formBuilder: FormBuilder,
+    private router: Router,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private sanitizer: DomSanitizer,
     private projectManagerService: ProjectManagerService,
   ) { }
@@ -33,6 +34,8 @@ export class ProjectManagerDetailComponent implements OnInit {
     createAt: '',
     updateAt: ''
   });
+
+  projectID!: number;
   resourceLogo: any[] = [];
 
   // Danh sách loại tài liệu dự án
@@ -40,8 +43,12 @@ export class ProjectManagerDetailComponent implements OnInit {
 
   ngOnInit(): void {
     var id = this.route.snapshot.paramMap.get('id');
+    this.checkTypePage(id);
+  }
+
+  checkTypePage(id: any): void {
     if (id) {
-      this.projectInfoForm.get('id')?.setValue(id);
+      this.projectID = +id;
       if (id == 'add-new') {
         this.getTitle('add-new');
         this.newFormAdd();
@@ -53,7 +60,7 @@ export class ProjectManagerDetailComponent implements OnInit {
   }
 
   // Tiêu đề của trang: Thêm mới / Chi tiết
-  getTitle(state: string) {
+  getTitle(state: string): void {
     let pageTitle = this.state.find(x => x.state == state);
     if (pageTitle) {
       this.pageTitle = pageTitle?.pageTitle;
@@ -61,7 +68,7 @@ export class ProjectManagerDetailComponent implements OnInit {
   }
 
   // Lấy dữ liệu ban đầu khi xem chi tiết
-  getProjectInfo(id: number) {
+  getProjectInfo(id: number): void {
     this.projectManagerService.getOneProject(id).subscribe(resp => {
       this.projectInfoForm.patchValue({
         name: resp.data.name,
@@ -71,18 +78,16 @@ export class ProjectManagerDetailComponent implements OnInit {
         createAt: moment(resp.data.createAt).format("YYYY-MM-DD"),
         updateAt: moment(resp.data.updateAt).format("YYYY-MM-DD")
       });
-      console.log(resp);
-      console.log(this.projectInfoForm.value);
     })
   }
 
   // Khởi tạo các giá trị ban đầu khi thêm mới
-  newFormAdd() {
+  newFormAdd(): void {
     this.list_documents = new_list_documents;
   }
 
   // Thay đổi trạng thái của tài liệu
-  changeCheck(docType: any, item: any) {
+  changeCheck(docType: any, item: any): void {
     if (this.list_documents.find(x => x.document_type == docType)?.list[item].check == 'checked') {
       this.list_documents.find(x => x.document_type == docType)!.list[item].check = '';
     } else {
@@ -91,7 +96,7 @@ export class ProjectManagerDetailComponent implements OnInit {
   }
 
   // Thêm mới tài liệu
-  addNewDocument(docType: string) {
+  addNewDocument(docType: string): void {
     var newItem = { id: '', stt: '', title: '', content: '', check: '' }
     this.list_documents.find(x => x.document_type == docType)?.list.push(newItem);
   }
@@ -111,19 +116,28 @@ export class ProjectManagerDetailComponent implements OnInit {
   }
 
   // Chức năng lưu
-  saveInput() {
+  saveInput(): void {
     const dataProject = {
       name: this.projectInfoForm.get('name')?.value,
       code: this.projectInfoForm.get('code')?.value,
       version: this.projectInfoForm.get('version')?.value
     }
 
-    console.log(dataProject);
+    const dataDocument = this.list_documents;
+
+    console.log(dataDocument);
+    
 
     if (!this.projectInfoForm.invalid) {
-      this.projectManagerService.createOneProject(dataProject).subscribe(res => {
-        if (res.success == true) {
+      this.projectManagerService.createOneProject(dataProject).subscribe(resp => {
+        if (resp.success == true) {
+
+
+
+
           alert('Thêm mới thành công');
+          this.router.navigate([`../${resp.data.id}`], { relativeTo: this.route });
+          this.checkTypePage(resp.data.id);
         } else {
           alert('Đã có lỗi xảy ra');
         }
@@ -131,5 +145,10 @@ export class ProjectManagerDetailComponent implements OnInit {
     } else {
       alert('Lỗi nhập liệu');
     }
+  }
+
+  // Chức năng cập nhật
+  updateInput(): void {
+
   }
 }

@@ -37,7 +37,8 @@
 
         <!-- Các nút chức năng -->
         <div class="mb-3 d-flex justify-content-end">
-            <button class="btn btn-primary" (click)="saveInput()">Lưu</button>
+            <button class="btn btn-primary" *ngIf="!projectID" (click)="saveInput()">Lưu</button>
+            <button class="btn btn-primary" *ngIf="projectID" (click)="updateInput()">Cập nhật</button>
         </div>
 
         <!-- Danh sách các loại tài liệu -->
