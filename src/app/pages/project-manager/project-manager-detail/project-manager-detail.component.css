@@ -51,6 +51,7 @@ p {
 .grid {
   position: relative;
   min-height: 120px;
+  background-color: white;
 }
 
 .img {
@@ -76,6 +77,10 @@ p {
 
 .check-done{
   border-color: #198754;
+}
+
+.project-start{
+  background-color: #198754;
 }
 
 

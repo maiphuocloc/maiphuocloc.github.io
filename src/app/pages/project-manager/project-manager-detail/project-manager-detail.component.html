@@ -3,7 +3,7 @@
         <p class="pb-3"><b>{{pageTitle}} dự án</b></p>
 
         <!-- Thông tin dự án -->
-        <form [formGroup]="projectInfoForm" class="project-box row m-0 p-2 my-3">
+        <form [formGroup]="projectInfoForm" class="project-box row m-0 p-2 my-3" [ngClass]="{'project-start': projectStatus}">
             <div class="project-logo col-2 p-0">
                 <input #logoBox type="file" accept="image/*" (change)="onFileLogoChanged($event)" hidden />
 
@@ -37,6 +37,8 @@
 
         <!-- Các nút chức năng -->
         <div class="mb-3 d-flex justify-content-end">
+            <button class="btn btn-success me-2" *ngIf="projectStatus == false" >Khởi động</button>
+            <button class="btn btn-danger me-2"  *ngIf="projectStatus == true" >Kết thúc</button>
             <button class="btn btn-primary" *ngIf="!projectID" (click)="saveInput()">Lưu</button>
             <button class="btn btn-primary" *ngIf="projectID" (click)="updateInput()">Cập nhật</button>
         </div>
@@ -64,8 +66,8 @@
                                     (change)="changeCheck(item.document_type,i)">
                             </div>
                             <div class="form-control p-2" [ngClass]="{'check-done': doc.check ? 'checker' : false}">
-                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề" value={{doc.title}}>
-                                <textarea class="form-control" placeholder="Nội dung" value={{doc.content}}></textarea>
+                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề" [(ngModel)]="doc.title">
+                                <textarea class="form-control" placeholder="Nội dung" [(ngModel)]="doc.content"></textarea>
                             </div>
                         </div>
                         <div class="add-new-document d-flex justify-content-center align-items-center p-2"

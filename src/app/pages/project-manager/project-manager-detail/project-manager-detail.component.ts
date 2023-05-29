@@ -29,13 +29,13 @@ export class ProjectManagerDetailComponent implements OnInit {
   projectInfoForm = this.formBuilder.group({
     name: ['', Validators.required],
     code: ['', Validators.required],
-    status_project: '',
     version: '',
     createAt: '',
     updateAt: ''
   });
 
   projectID!: number;
+  projectStatus!: boolean;
   resourceLogo: any[] = [];
 
   // Danh sách loại tài liệu dự án
@@ -73,11 +73,12 @@ export class ProjectManagerDetailComponent implements OnInit {
       this.projectInfoForm.patchValue({
         name: resp.data.name,
         code: resp.data.code,
-        status_project: resp.data.status_project,
         version: resp.data.version,
         createAt: moment(resp.data.createAt).format("YYYY-MM-DD"),
         updateAt: moment(resp.data.updateAt).format("YYYY-MM-DD")
       });
+
+      this.projectStatus = resp.data.status_project;
     })
   }
 
@@ -127,7 +128,7 @@ export class ProjectManagerDetailComponent implements OnInit {
 
     console.log(dataDocument);
     
-
+    console.log(this.list_documents);
     if (!this.projectInfoForm.invalid) {
       this.projectManagerService.createOneProject(dataProject).subscribe(resp => {
         if (resp.success == true) {
