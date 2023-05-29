@@ -43,8 +43,8 @@ const new_list_documents = [
     {
       stt: 4,
       list: [
-        {stt: 1, title: 'PO'},
-        {stt: 2, title: 'Estimation'}
+        {stt: 1, title: 'Nội dung cuộc họp'},
+        {stt: 2, title: 'Tóm tắt cuộc họp'}
       ],
       document_type: 'meeting_document',
       title: 'Nội dung các cuộc họp'
