@@ -3,7 +3,8 @@
         <p class="pb-3"><b>{{pageTitle}} dự án</b></p>
 
         <!-- Thông tin dự án -->
-        <form [formGroup]="projectInfoForm" class="project-box row m-0 p-2 my-3" [ngClass]="{'project-start': projectStatus}">
+        <form [formGroup]="projectInfoForm" class="project-box row m-0 p-2 my-3"
+            [ngClass]="{'project-start': projectStatus}">
             <div class="project-logo col-2 p-0">
                 <input #logoBox type="file" accept="image/*" (change)="onFileLogoChanged($event)" hidden />
 
@@ -13,32 +14,35 @@
                     </div>
                 </div>
 
-                <div *ngIf="resourceLogo.length == 1" (click)="logoBox.click()" class="logo-box">
-                    <div *ngFor="let res of resourceLogo">
-                        <div class="grid">
-                            <img [src]="res.preview" class="img rounded" />
-                        </div>
+                <div *ngIf="imgSpin" (click)="logoBox.click()" class="logo-box">
+                    <div class="grid">
+                        <img src='{{apiUrl}}/{{imgSpin}}' class="img rounded" />
                     </div>
                 </div>
             </div>
 
             <div class="project-info col-10 p-0 ps-2">
-                <input type="text" class="form-control project-name mb-2" formControlName="name" placeholder="Tên dự án">
+                <input type="text" class="form-control project-name mb-2" formControlName="name"
+                    placeholder="Tên dự án">
                 <div class="input-group">
-                    <input type="text" class="form-control project-code mb-2" formControlName="code" placeholder="Mã dự án">
-                    <input type="text" class="form-control project-code mb-2" formControlName="version" placeholder="Phiên bản">
-                  </div>
+                    <input type="text" class="form-control project-code mb-2" formControlName="code"
+                        placeholder="Mã dự án">
+                    <input type="text" class="form-control project-code mb-2" formControlName="version"
+                        placeholder="Phiên bản">
+                </div>
                 <div class="input-group">
-                    <input type="date" class="form-control project-create" formControlName="createAt" [attr.disabled]="true">
-                    <input type="date" class="form-control project-update" formControlName="updateAt" [attr.disabled]="true">
+                    <input type="date" class="form-control project-create" formControlName="createAt"
+                        [attr.disabled]="true">
+                    <input type="date" class="form-control project-update" formControlName="updateAt"
+                        [attr.disabled]="true">
                 </div>
             </div>
         </form>
 
         <!-- Các nút chức năng -->
         <div class="mb-3 d-flex justify-content-end">
-            <button class="btn btn-success me-2" *ngIf="projectStatus == false" >Khởi động</button>
-            <button class="btn btn-danger me-2"  *ngIf="projectStatus == true" >Kết thúc</button>
+            <button class="btn btn-success me-2" *ngIf="projectStatus == false">Khởi động</button>
+            <button class="btn btn-danger me-2" *ngIf="projectStatus == true">Kết thúc</button>
             <button class="btn btn-primary" *ngIf="!projectID" (click)="saveInput()">Lưu</button>
             <button class="btn btn-primary" *ngIf="projectID" (click)="updateInput()">Cập nhật</button>
         </div>
@@ -59,15 +63,18 @@
 
                         <!-- Danh sách các tài liệu -->
                         <div *ngFor="let doc of item.list; index as i" class="input-group mb-2">
-                            <div class="input-group-text" [ngClass]="{'check-done': doc.check ? 'checker' : false}">
+                            <div class="input-group-text"
+                                [ngClass]="{'check-done': doc.check == true ? 'checker' : false}">
                                 <input class="form-check-input mt-0" type="checkbox"
-                                    [attr.checked]="doc.check ? 'checker' : null"
+                                    [attr.checked]="doc.check == true ? 'checker' : null"
                                     aria-label="Checkbox for following text input"
                                     (change)="changeCheck(item.document_type,i)">
                             </div>
-                            <div class="form-control p-2" [ngClass]="{'check-done': doc.check ? 'checker' : false}">
-                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề" [(ngModel)]="doc.title">
-                                <textarea class="form-control" placeholder="Nội dung" [(ngModel)]="doc.content"></textarea>
+                            <div class="form-control p-2"
+                                [ngClass]="{'check-done': doc.check == true ? 'checker' : false}">
+                                <input type="text" class="form-control mb-2" placeholder="Tiêu đề"
+                                    [(ngModel)]="doc.title">
+                                <textarea class="form-control" placeholder="Nội dung" [(ngModel)]="doc.link"></textarea>
                             </div>
                         </div>
                         <div class="add-new-document d-flex justify-content-center align-items-center p-2"

@@ -13,22 +13,22 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      {
-        path: 'home',
-        component: HomeComponent,
-      },
-      {
-        path: 'cv',
-        component: CurriculumVitaeComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-      {
-        path: 'library',
-        component: LibraryComponent,
-      },
+      // {
+      //   path: 'home',
+      //   component: HomeComponent,
+      // },
+      // {
+      //   path: 'cv',
+      //   component: CurriculumVitaeComponent,
+      // },
+      // {
+      //   path: 'profile',
+      //   component: ProfileComponent,
+      // },
+      // {
+      //   path: 'library',
+      //   component: LibraryComponent,
+      // },
       {
         path: 'project-manager',
         loadChildren: () =>

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { switchMap } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -43,5 +44,24 @@ export class ProjectManagerService {
           }),
         };
         return this.http.get(url_, options_);
+      }
+
+      updateImageSpin(image: any): Observable<any> {
+
+        let url_ = this.apiUrl + `/upLoadLogo`;
+        var formdata = new FormData();
+        
+        for (let file of image) {
+          formdata.append('logo', file);
+        }
+    
+        var requestOptions: any =  {
+          method: 'POST',
+          body: formdata,
+          redirect: 'follow',
+        };
+        return from(
+          fetch(url_, <any>requestOptions)
+        ).pipe(switchMap((response) => response.json()));
       }
 }

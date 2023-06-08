@@ -6,16 +6,16 @@
         </div>
         <p class="mb-3">Dự án xem gần đây</p>
         <div class="last-project-list row m-0 gx-0 gx-lg-2 gy-2 gy-lg-0">
-            <div class="last-project-spacing col-md-6 col-lg-3" routerLink="/project-manager/1">
+            <div *ngFor="let item of lastProjects" class="last-project-spacing col-md-6 col-lg-3" routerLink="/project-manager/{{item.id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.name}}">
                 <div class="last-project-box row m-0 p-2">
                     <div class="project-logo d-flex justify-content-center align-items-center col-2 col-md-4 p-0">
-                        <img src="../../../assets/curriculum-vitae/avatar.jpg" alt="">
+                        <img src="{{item.logo}}" alt="">
                     </div>
                     <div class="last-project-info col-10 col-md-8 p-0 ps-2">
-                        <p class="project-name"><b>Tên dự án</b></p>
-                        <p class="project-code">Mã dự án - Phiên bản</p>
-                        <p class="create-at">Ngày tạo dự án</p>
-                        <p class="update-at">Ngày cập nhật gần đây</p>
+                        <p class="project-name"><b>{{item.name}}</b></p>
+                        <p class="project-code"><i class="fa-solid fa-tag"></i> {{item.code}}</p>
+                        <p class="project-code"><i class="fa-solid fa-code-branch"></i> {{item.version}}</p>
+                        <p class="update-at"><i class="fa-solid fa-rotate"></i> {{formatDate(item.updatedAt)}}</p>
                     </div>
                 </div>
             </div>
@@ -25,16 +25,16 @@
             <button routerLink="/project-manager/add-new" class="btn btn-primary">Thêm mới +</button>
         </div>
         <div class="project-list">
-            <div class="project-box p-2" routerLink="/project-manager/1">
+            <div *ngFor="let item of allProjects" class="project-box p-2" routerLink="/project-manager/{{item.id}}">
                 <div class="row m-0">
                     <div class="project-logo d-flex justify-content-center align-items-center col-2 p-0">
-                        <img src="../../../assets/curriculum-vitae/avatar.jpg" alt="">
+                        <img src="{{item.logo}}" alt="">
                     </div>
                     <div class="project-info col-10 p-0 ps-2">
-                        <p class="project-name"><b>Tên dự án</b></p>
-                        <p class="project-code">Mã dự án - Phiên bản</p>
-                        <p class="create-at">Ngày tạo dự án</p>
-                        <p class="update-at">Ngày cập nhật gần đây</p>
+                        <p class="project-name"><b>{{item.name}}</b></p>
+                        <p class="project-code"><i class="fa-solid fa-tag"></i> {{item.code}} - <i class="fa-solid fa-code-branch"></i> {{item.version}}</p>
+                        <p class="create-at"><i class="fa-solid fa-plus"></i> {{formatDate(item.createdAt)}}</p>
+                        <p class="update-at"><i class="fa-solid fa-rotate"></i> {{formatDate(item.updatedAt)}}</p>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ const new_list_documents = [
         {stt: 1, title: 'PO'},
         {stt: 2, title: 'Estimation'}
       ],
-      document_type: 'project_document',
+      document_type: 1,
       title: 'Tài liệu dự án'
     },
     //khởi tạo Quyết định 
@@ -24,7 +24,7 @@ const new_list_documents = [
         {stt: 1, title: 'Quyết định khởi động dự án'},
         {stt: 2, title: 'Quyết định thành lập đội dự án'}
       ],
-      document_type: 'decision_document', 
+      document_type: 2, 
       title: 'Quyết định'
     },
     //khởi tạo Tài liệu kỹ thuật
@@ -36,7 +36,7 @@ const new_list_documents = [
         {stt: 3, title: 'Tài liệu SRD'},
         {stt: 4, title: 'Design',}
       ],
-      document_type: 'technical_document',
+      document_type: 3,
       title: 'Tài liệu kỹ thuật'
     },
     //khởi tạo Nội dung cuộc họp
@@ -46,7 +46,7 @@ const new_list_documents = [
         {stt: 1, title: 'Nội dung cuộc họp'},
         {stt: 2, title: 'Tóm tắt cuộc họp'}
       ],
-      document_type: 'meeting_document',
+      document_type: 4,
       title: 'Nội dung các cuộc họp'
     },
     //khởi tạo Báo cáo tiến độ hằng tuần
@@ -55,7 +55,7 @@ const new_list_documents = [
       list: [
         {stt: 1, title: 'Báo cáo tuần 1'}
       ],
-      document_type: 'report_document',
+      document_type: 5,
       title: 'Báo cáo tiến độ hằng tuần'
     },
     //khởi tạo Xây dựng dự án
@@ -69,7 +69,7 @@ const new_list_documents = [
         {stt: 5, title: 'content GIT FE'},
         {stt: 6, title: 'content GIT BE'}
       ],
-      document_type: 'build_document',
+      document_type: 6,
       title: 'Xây dựng dự án'
     },
     //khởi tạo Biên bản nghiệm thu
@@ -82,7 +82,7 @@ const new_list_documents = [
         {stt: 4, title: 'Biên bản bàn giao'},
         {stt: 5, title: 'Biên bản nghiệm thu tổng thể'}
       ],
-      document_type: 'acceptance_document',
+      document_type: 7,
       title: 'Biên bản nghiệm thu'
     },
   ];

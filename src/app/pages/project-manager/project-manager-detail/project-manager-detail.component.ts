@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectManagerService } from 'src/app/Service/projectManager.service';
 import { state, new_list_documents } from '../Enum';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-manager-detail',
@@ -20,6 +21,8 @@ export class ProjectManagerDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private projectManagerService: ProjectManagerService,
   ) { }
+
+   apiUrl = environment.configAPI.API_BASE_URL;
 
   // Thông tin trang
   state = state;
@@ -37,6 +40,7 @@ export class ProjectManagerDetailComponent implements OnInit {
   projectID!: number;
   projectStatus!: boolean;
   resourceLogo: any[] = [];
+  imgSpin!: string;
 
   // Danh sách loại tài liệu dự án
   list_documents: any[] = [];
@@ -77,7 +81,7 @@ export class ProjectManagerDetailComponent implements OnInit {
         createAt: moment(resp.data.createAt).format("YYYY-MM-DD"),
         updateAt: moment(resp.data.updateAt).format("YYYY-MM-DD")
       });
-
+      this.list_documents = resp.data.detailProjects
       this.projectStatus = resp.data.status_project;
     })
   }
@@ -89,10 +93,10 @@ export class ProjectManagerDetailComponent implements OnInit {
 
   // Thay đổi trạng thái của tài liệu
   changeCheck(docType: any, item: any): void {
-    if (this.list_documents.find(x => x.document_type == docType)?.list[item].check == 'checked') {
-      this.list_documents.find(x => x.document_type == docType)!.list[item].check = '';
+    if (this.list_documents.find(x => x.document_type == docType)?.list[item].check == true) {
+      this.list_documents.find(x => x.document_type == docType)!.list[item].check = false;
     } else {
-      this.list_documents.find(x => x.document_type == docType)!.list[item].check = 'checked';
+      this.list_documents.find(x => x.document_type == docType)!.list[item].check = true;
     }
   }
 
@@ -104,7 +108,7 @@ export class ProjectManagerDetailComponent implements OnInit {
 
   // Thay đổi logo
   onFileLogoChanged(event: any): void {
-    if (event.target.files) {
+    if (event.target.files && event.target.files[0]) {
       this.resourceLogo = [];
       for (let file of event.target.files) {
         file.preview = this.sanitizer.bypassSecurityTrustUrl(
@@ -113,7 +117,9 @@ export class ProjectManagerDetailComponent implements OnInit {
         this.resourceLogo.push(file);
       }
     }
-    event.target.value = '';
+    this.projectManagerService.updateImageSpin(this.resourceLogo).subscribe(resp => {
+      this.imgSpin = resp.data;
+    });
   }
 
   // Chức năng lưu
@@ -121,14 +127,14 @@ export class ProjectManagerDetailComponent implements OnInit {
     const dataProject = {
       name: this.projectInfoForm.get('name')?.value,
       code: this.projectInfoForm.get('code')?.value,
-      version: this.projectInfoForm.get('version')?.value
+      version: this.projectInfoForm.get('version')?.value,
+      logo: this.imgSpin ? this.imgSpin : '',
+      detailProjects: this.list_documents
     }
 
-    const dataDocument = this.list_documents;
 
-    console.log(dataDocument);
-    
-    console.log(this.list_documents);
+    console.log('dataProject', dataProject);
+
     if (!this.projectInfoForm.invalid) {
       this.projectManagerService.createOneProject(dataProject).subscribe(resp => {
         if (resp.success == true) {
